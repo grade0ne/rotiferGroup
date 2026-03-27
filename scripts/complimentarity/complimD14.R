@@ -77,43 +77,70 @@ growth_summary <- results(rotifer_growth_models) %>%
 # 2: compare growth rate (r) with/without competition at high/low diversity
 # Two-way ANOVA
 
-model <- lm(r ~ diversity + competition, data = growth_summary)
-plot(model)
-
 library(moments)
 library(car)
 qqp(growth_summary$r)
 qqp(log(growth_summary$r))
 
 model_log <- lm(log(r) ~ diversity + competition + diversity:competition, data = growth_summary)
-
 anova(model_log)
 
 library(lme4)
 library(lmerTest)
 
-model_mix <- lmer(r ~ diversity + competition + diversity:competition + (1|clone), data = growth_summary)
+model_mix <- lmer(r ~ diversity * competition + (1|clone), data = growth_summary)
+model_mix_log <- lmer(log(r) ~ diversity * competition + (1|clone), data = growth_summary)
 
-# rotifers that experienced competition grew more slowly than those that did not. The effect of competition was not dependent on diversity. 27% of the total variance among replicates was attributed to differences among clones.
 
-sub_summary <- growth_summary %>%
-  group_by(competition, diversity, clone) %>%
-  summarize(mean_r = mean(r), se_r = sd(r)/sqrt(length(r)))
 
-r_comparison <- sub_summary %>%
-  filter(competition == TRUE)
-  
-mix_mean <- 0.799
-mix_se <- 0.263
+# obs - exp for percent deviation:
 
-clone_mean <- 0.853
-clone_se <- 0.105
+clone_means <- growth_summary %>%
+  group_by(competition, clone) %>%
+  summarize(mean_r = mean(r)) %>%
+    ungroup()
 
-complim_graph <- data.frame(
-  group = c("mix", "clone"),
-  mean  = c(0.799, 0.853),
-  se    = c(0.263, 0.105)
-)
+observed <- clone_means %>%
+  filter(clone == "mix") %>%
+  rename(observed = mean_r)
+
+expected <- clone_means %>%
+  filter(clone != "mix") %>%
+  group_by(competition) %>%
+  summarize(expected = mean(mean_r)) %>%
+    ungroup()
+
+obs_exp <- observed %>%
+  left_join(expected, by = "competition") %>%
+  mutate(
+    obs_minus_exp = observed - expected,
+    pct_diff = 100 * obs_minus_exp / expected
+  )
+
+# t tests
+
+mix_data <- growth_summary %>%
+  filter(clone == "mix") %>%
+  select(competition, r)
+
+mix_diff <- mix_data %>%
+  left_join(expected, by = "competition") %>%
+  mutate(diff = r - expected)
+
+
+t.test(mix_diff$diff[mix_diff$competition == "FALSE"], mu = 0)
+
+t.test(mix_diff$diff[mix_diff$competition == "TRUE"], mu = 0)
+
+ggplot(clone_means, aes(x = clone, y = mean_r, color = clone == "mix")) +
+  geom_hline(data = expected, aes(yintercept = expected), 
+             linetype = "dashed", inherit.aes = FALSE) +
+  geom_point(size = 3) +
+  facet_wrap(~competition) +
+  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red", guide = "none")) +
+  labs(x = "Clone", y = "Mean growth rate (r)") +
+  theme_classic()
+
 
 ggplot(data = complim_graph, aes(x = group, y = mean, fill = group)) +
   geom_bar(stat = 'identity') +

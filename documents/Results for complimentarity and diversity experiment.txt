@@ -1,0 +1,17 @@
+## Results for complimentarity and competition experiment (block 1)
+
+
+### Effect of competition:
+- Competition significantly reduced growth rate
+	(two-way ANOVA on log-transformed r. F1,32 = 5.44, P = 0.026)
+
+### Effect of diversity:
+- The mixture of clones (high diversity treatment) had a similar growth rate to the average of all five monocultures in the presence of a competitor (6% lower)
+
+- The mixture of clones had a 35% lower growth rate than the average of all five monocultures in the absence of a competitor
+
+- One-sample t-tests comparing observed and expected growth rates were not significant, but statistical power is low with just one experimental block (n=3, df=2) 
+
+### Take-home message:
+- So far, we have found no evidence of a complimentarity effect of diversity on the effect of competition. Our data so far actually point towards a negative effect of diversity on the effect of competition. However, these results are preliminary, and represent a small sample size. 
+- One clone exhibited a much higher growth rate than the other four, especially in the absence of a competitor. This performance, however, was not present in the mixed-clone cultures.

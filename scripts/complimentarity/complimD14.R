@@ -88,7 +88,7 @@ anova(model_log)
 library(lme4)
 library(lmerTest)
 
-model_mix <- lmer(r ~ diversity * competition + (1|clone), data = growth_summary)
+model_mix <- lmer(log(r) ~ competition + (1|clone), data = growth_summary)
 model_mix_log <- lmer(log(r) ~ diversity * competition + (1|clone), data = growth_summary)
 
 

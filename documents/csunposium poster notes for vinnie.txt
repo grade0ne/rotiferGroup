@@ -1,0 +1,50 @@
+Overall very strong start, nice work! Design looks good.
+
+## Title box:
+- The authors should be a smaller font size than the title itself
+- Period after Breanna's name should be comma
+- Add my middle initial (A), and Breanna's middle initial (M)
+- Add the lab logo (I will send that to you)
+
+## Background:
+- First sentence is a little too broad, even for the CSUNposium audience
+- Try breaking the paragraph into bullet points (or individual lines of text) for ease of reading
+- Each sentence could be made a little shorter
+- Replace "impacting" with "affecting"
+- If you're not going to mention evolution-mediated indirect effects anywhere else, I would simplify the term in your diagram (maybe to just "indirect effect")
+
+- Replace the sentence "We will use the community of..." with just "Pitcher Plant Inquiline Community". You may have to verbally define inquiline for people as you present, but there isn't really a short way to say 'organisms that live inside of pockets or cavities created by another organism'
+- Add picture of S. purpurea, with the label "Purple Pitcher Plant (Sarracenia purpurea)"
+- Alternate version of the last sentence: "Previous work has suggested that temperature stress-adapted rotifers are more affected by competition"
+
+- Am I supposed to make this missing figure? If so, sorry I forgot! Let me know and I can get something together real quick.
+
+## Aim:
+- Since our metric of competitive ability is going to be the slope generated across all bacterial concentrations, I wouldn't say "across a gradient..." here. Maybe instead: "using a gradient..."? Or even simpler, just leave it as "Explore competitive ability between rotifers evolved at different temperatures"
+
+## Methods:
+- The cultures that evolved were mixes of many clones isolated from the field, the way it's written now makes it sound like the clonal cultures evolved
+- Instead of ambiguous terms like "several" and "significant amount", either don't specify at all, or give the specific amount. You can leave out the number of tubes, but I would specify ">100 generations (6 months)" for the evolution period.
+- Falcon is technically a brand, so should be capitalized. Recently I've tended to avoid using Falcon in writing, and instead call them "50 ml conical tubes", which is more descriptive for people unfamiliar with Falcon tubes.
+
+- The abundance ~ time graph has the old, incorrect depiction of intrinsic growth rate (r). It shows mumax, the "instantaneous maximum growth rate" which is different from what we're going to do. Also, we won't be doing K since it's dependent on r, and is therefore technically "double dipping" mathematically. Instead, draw a logistic curve over the data. I'm on the fence about labeling r and alpha... since they're kind-of abstract ideas. We can talk about that in lab meeting.
+
+- The methods section should include some details about the actual procedure you're going to do:
+	- We need to mention that we're using OD-600 to estimate bacteria 	concentration
+	- Counting rotifers using counting slides on a compound microscope 
+	- how we model population growth using the growthrates package in R 	directly from population curves.
+
+- Resource ration (R-R) hypothesis explanation and figure look great, keep that for sure
+
+- If you feel like there's not enough space for the procedural parts of the methods I outlined above, you can cut back on your initial existing paragraph. I do like how you mentioned where your samples came from, but it isn't necessary to include on the poster for this project. You could just open with "Diverse cultures of pitcher plant rotifers collected from the field were maintained at 25 and 30 C for ~100 generations (6 months)." That also removes the clone part, which isn't necessary for this project.
+
+## Expected Outcome
+- Replace "30C temperature group" with "rotifers that evolved at 30C"
+- The second sentence about steepness (which, I would argue should be replaced with just "slope") might work better at the end of the methods? At least, during the R-R hypothesis explanation you can point out the association between R* and the slopes. 
+(As an aside here: be prepared for someone to point out that the two populations could have the same slope, but different R* if the y-intercept is different. That is true, and we could also test that (y-int) and use it as an indicator of competitive ability.)
+
+## Significance
+- No notes from me here
+
+## Acknowledgements
+- You actually shouldn't have authors in your acknowledgements, because technically, this poster is just as much ours as it is yours! If you think of anyone else to put here, go for it. Otherwise, the space might be better used to expand the above sections (Significance looks a little text-heavy and crowded).

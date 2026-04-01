@@ -97,17 +97,19 @@ model_mix_log <- lmer(log(r) ~ diversity * competition + (1|clone), data = growt
 
 clone_means <- growth_summary %>%
   group_by(competition, clone) %>%
-  summarize(mean_r = mean(r)) %>%
+  summarize(mean_r = mean(r),
+            ci = sd(log(r))/sqrt(length(r))*1.96) %>%
     ungroup()
 
 observed <- clone_means %>%
   filter(clone == "mix") %>%
-  rename(observed = mean_r)
+  mutate(logr = log(mean_r)) %>%
+  rename(observed = logr)
 
 expected <- clone_means %>%
   filter(clone != "mix") %>%
   group_by(competition) %>%
-  summarize(expected = mean(mean_r)) %>%
+  summarize(expected = log(mean(mean_r))) %>%
     ungroup()
 
 obs_exp <- observed %>%
@@ -132,15 +134,32 @@ t.test(mix_diff$diff[mix_diff$competition == "FALSE"], mu = 0)
 
 t.test(mix_diff$diff[mix_diff$competition == "TRUE"], mu = 0)
 
-ggplot(clone_means, aes(x = clone, y = mean_r, color = clone == "mix")) +
+ggplot(clone_means, aes(x = clone, y = log(mean_r), color = clone == "mix")) +
   geom_hline(data = expected, aes(yintercept = expected), 
              linetype = "dashed", inherit.aes = FALSE) +
   geom_point(size = 3) +
+  geom_errorbar(data = subset(clone_means, clone == "mix"), 
+                stat = "identity", aes(ymin = log(mean_r) - ci, ymax = log(mean_r) + ci),
+                width = 0.2) +
   facet_wrap(~competition) +
   scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red", guide = "none")) +
-  labs(x = "Clone", y = "Mean growth rate (r)") +
-  theme_classic()
+  labs(x = "Clone", y = "Intrinsic growth rate, ln(r)") +
+  theme_classic() +
+  theme(legend.location = "none")
 
+
+ggplot(clone_means, aes(x = clone, y = log(mean_r), color = clone == "mix")) +
+  geom_hline(data = expected, aes(yintercept = expected), 
+             linetype = "dashed", inherit.aes = FALSE) +
+  geom_point(size = 3) +
+  geom_errorbar( 
+                stat = "identity", aes(ymin = log(mean_r) - ci, ymax = log(mean_r) + ci),
+                width = 0.2) +
+  facet_wrap(~competition) +
+  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red", guide = "none")) +
+  labs(x = "Clone", y = "Intrinsic growth rate, ln(r)") +
+  theme_classic() +
+  theme(legend.location = "none")
 
 ggplot(data = complim_graph, aes(x = group, y = mean, fill = group)) +
   geom_bar(stat = 'identity') +
@@ -152,3 +171,17 @@ ggplot(data = complim_graph, aes(x = group, y = mean, fill = group)) +
     panel.grid = element_blank(),
     panel.border = element_rect(linewidth = 0.5)
   )
+
+ggplot(clone_means, aes(x = clone, y = log(mean_r), color = clone == "mix")) +
+  geom_hline(data = expected, aes(yintercept = expected), 
+             linetype = "dashed", inherit.aes = FALSE) +
+  geom_point(size = 3) +
+  geom_point(data = growth_summary, aes(x = clone, y = log(r))) +
+  geom_errorbar(data = subset(clone_means, clone == "mix"), 
+                stat = "identity", aes(ymin = log(mean_r) - ci, ymax = log(mean_r) + ci),
+                width = 0.2) +
+  facet_wrap(~competition) +
+  scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red", guide = "none")) +
+  labs(x = "Clone", y = "Intrinsic growth rate, ln(r)") +
+  theme_classic() +
+  theme(legend.location = "none")

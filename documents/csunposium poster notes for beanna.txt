@@ -1,0 +1,52 @@
+Good start overall, you've done the hard part: throwing some stuff on the screen.
+
+## Title box:
+- The logos (especially the CSUN one) look crowded, maybe you need to make the actual title two lines, broken after the ":"
+- The institution should be the same font size as the authors
+
+## Background:
+- Your background is not bad, but uses too many words to scratch the surface of what your project is about. How about this:
+
+- Complimentarity in ecology is when diversity leads to enhanced function or performance
+
+- Traditionally, complimentarity is studied at the level of species diversity, but it might also exist within populations of one species
+
+- Aim: Investigate the effects of standing genetic diversity on response to competition in Pitcher Plant Rotifers (Habrotrocha rosa)
+
+- Pitcher plant inquiline community:
+	(figure)
+
+- Habrotrocha rosa
+	(pictures)
+
+- Tetrahymena
+	(pictures)
+
+## Preliminary Results:
+- I would capitalize the R in results
+- Since you have the space, we should use a technique called "Assertion - Evidence", where you state the main takeaway of a graph (the assertion) right above the graph (the evidence). Below is how I recommend you do that:
+
+- Fig1 assertion: "H. rosa experience competition at both high and low diversity"
+- (Figure itself)
+- Fig1 caption: "Population growth curves of mono-clonal rotifer cultures (panels 1-5) and mixed cultures with equal proportion of all five clones (“mix” panel) grown with and without a competitor. Rotifers grew faster in the absence of a competitor regardless of diversity (Two-factor ANOVA; F, df, P)."
+
+- Fig2 assertion: "Diversity might not affect competition"
+- (Figure itself)
+- Fig2 caption: "Mean intrinsic growth rate (r) of rotifer clones grown separately (black) and together (red). Dashed line is the combined mean of all five clones when grown separately."
+
+## Methods:
+- Include details about the actual experiment, go back to your procedure and paraphrase it into 5 major steps, limit yourself to ~6 words per step. 
+
+- We don't need to include the statistical tests here, since you'll mention the ANOVA in the figure 1 caption.
+
+- The only thing you should keep for the data analysis part is the growthrates bullet point, which can stay just as it is. Maybe re-name the section to "Modeling" since we got rid of the actual analysis steps.
+
+- Add some generic pictures of falcon tubes, I like the existing pictures of rotifers and protists, but with the five steps for methods, there is going to be more open space that needs filling
+
+## Significance:
+- What you have here now is closer to results (I used some of what you wrote in the figure captions and assertion statements)
+- Maybe go with some bullets like these:
+
+- "Ecologists have historically ignored the effects of diversity within populations"
+- "Diversity may be important for how a population interacts with other species"
+- "The effects of diversity on competition are unknown in this system"

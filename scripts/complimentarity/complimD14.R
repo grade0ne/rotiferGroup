@@ -148,6 +148,20 @@ ggplot(clone_means, aes(x = clone, y = log(mean_r), color = clone == "mix")) +
   theme(legend.location = "none")
 
 
+new_graph_data <- clone_means %>%
+  group_by(competition) %>%
+  summarize(
+    mean_mono = mean(mean_r[clone != "mix"]),
+    sd_mono = sd(mean_r[clone != "mix"]),
+    n_mono = length((mean_r[clone != "mix"])),
+    ci_mono = sd_mono / sqrt(n_mono) * 1.96,
+
+    mean_mix = mean_r[clone == "mix"],
+    sd_mix = sd(mean_r[clone == "mix"]),
+    n_mix = length((mean_r[clone == "mix"])),
+    ci_mix = sd_mix / sqrt(n_mix) * 1.96
+  )
+
 ggplot(clone_means, aes(x = clone, y = log(mean_r), color = clone == "mix")) +
   geom_hline(data = expected, aes(yintercept = expected), 
              linetype = "dashed", inherit.aes = FALSE) +
@@ -158,7 +172,7 @@ ggplot(clone_means, aes(x = clone, y = log(mean_r), color = clone == "mix")) +
   facet_wrap(~competition) +
   scale_color_manual(values = c("FALSE" = "black", "TRUE" = "red", guide = "none")) +
   labs(x = "Clone", y = "Intrinsic growth rate, ln(r)") +
-  theme_classic() +
+  theme_classic(base_size = 16) +
   theme(legend.location = "none")
 
 ggplot(data = complim_graph, aes(x = group, y = mean, fill = group)) +
@@ -185,3 +199,97 @@ ggplot(clone_means, aes(x = clone, y = log(mean_r), color = clone == "mix")) +
   labs(x = "Clone", y = "Intrinsic growth rate, ln(r)") +
   theme_classic() +
   theme(legend.location = "none")
+library(dplyr)
+library(ggplot2)
+
+plot_data <- growth_summary %>%
+  mutate(
+    competition = factor(competition),
+    group = if_else(clone == "mix", "mix", "a-e"),
+    log_r = log(r)
+  ) %>%
+  group_by(competition, group) %>%
+  summarize(
+    mean_log_r = mean(log_r, na.rm = TRUE),
+    sd_log_r = sd(log_r, na.rm = TRUE),
+    n = sum(!is.na(log_r)),
+    se = sd_log_r / sqrt(n),
+    ci = qt(0.975, df = n - 1) * se,
+    .groups = "drop"
+  ) %>%
+  mutate(group = factor(group, levels = c("a-e", "mix")))
+
+ggplot(plot_data, aes(x = group, y = mean_log_r, color = group)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean_log_r - ci, ymax = mean_log_r + ci),
+                width = 0.15) +
+  facet_wrap(~competition) +
+  scale_color_manual(values = c("a-e" = "black", "mix" = "red")) +
+  labs(x = "Clone group", y = "Intrinsic growth rate, ln(r)") +
+  theme_classic() +
+  theme(legend.position = "none")
+
+
+
+
+library(dplyr)
+library(ggplot2)
+
+plot_data <- growth_summary %>%
+  mutate(
+    competition = factor(competition),
+    group = if_else(clone == "mix", "mix", "a-e"),
+    log_r = log(r)
+  ) %>%
+  group_by(competition, group) %>%
+  summarize(
+    mean_log_r = mean(log_r, na.rm = TRUE),
+    sd_log_r = sd(log_r, na.rm = TRUE),
+    n = sum(!is.na(log_r)),
+    se = sd_log_r / sqrt(n),
+    ci = qt(0.975, df = n - 1) * se,
+    .groups = "drop"
+  ) %>%
+  mutate(group = factor(group, levels = c("a-e", "mix")))
+
+ggplot(plot_data, aes(x = group, y = mean_log_r, color = group)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean_log_r - ci, ymax = mean_log_r + ci),
+                width = 0.15) +
+  facet_wrap(~competition) +
+  scale_color_manual(values = c("a-e" = "black", "mix" = "red")) +
+  labs(x = "Clone group", y = "Intrinsic growth rate, ln(r)") +
+  theme_classic() +
+  theme(legend.position = "none")
+
+
+
+library(dplyr)
+library(ggplot2)
+
+plot_data <- growth_summary %>%
+  mutate(
+    competition = factor(competition),
+    group = if_else(clone == "mix", "mix", "a-e"),
+    log_r = log(r)
+  ) %>%
+  group_by(competition, group) %>%
+  summarize(
+    mean_log_r = mean(log_r, na.rm = TRUE),
+    sd_log_r = sd(log_r, na.rm = TRUE),
+    n = sum(!is.na(log_r)),
+    se = sd_log_r / sqrt(n),
+    ci = qt(0.975, df = n - 1) * se,
+    .groups = "drop"
+  ) %>%
+  mutate(group = factor(group, levels = c("a-e", "mix")))
+
+ggplot(plot_data, aes(x = group, y = mean_log_r, color = group)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = mean_log_r - ci, ymax = mean_log_r + ci),
+                width = 0.15) +
+  facet_wrap(~competition) +
+  scale_color_manual(values = c("a-e" = "black", "mix" = "red")) +
+  labs(x = "Clone group", y = "Intrinsic growth rate, ln(r)") +
+  theme_classic() +
+  theme(legend.position = "none")

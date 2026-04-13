@@ -77,8 +77,12 @@ growth_summary <- results(rotifer_growth_models) %>%
 # 2: compare growth rate (r) with/without competition at high/low diversity
 # Two-way ANOVA
 
+
 library(moments)
 library(car)
+
+## growth rate
+
 qqp(growth_summary$r)
 qqp(log(growth_summary$r))
 
@@ -91,7 +95,24 @@ library(lmerTest)
 model_mix <- lmer(log(r) ~ competition + (1|clone), data = growth_summary)
 model_mix_log <- lmer(log(r) ~ diversity * competition + (1|clone), data = growth_summary)
 
+# alpha
 
+hist(growth_summary$alpha)
+hist(log(growth_summary$alpha))
+
+qqp(log(growth_summary$alpha))
+
+alpha_model <- lm(log(alpha) ~ diversity + competition + diversity:competition, data = growth_summary)
+
+
+# EQ
+growth_summary <- growth_summary %>%
+  mutate(eq = r / alpha)
+
+hist(growth_summary$eq)
+qqp(growth_summary$eq)
+
+k_model <- lm(eq ~ diversity*competition, data = growth_summary)
 
 # obs - exp for percent deviation:
 

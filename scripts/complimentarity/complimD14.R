@@ -58,7 +58,7 @@ plot_models <- function(models) {
     
     mtext(this_model, side = 3, adj = 0.1, line = -1, cex = 0.5)
     mtext(paste("r:", this_r), side = 3, adj = 0.1, line = -2, cex = 0.5)
-    mtext(paste("a:", this_a), side = 3, adj = 0.1, line = -2, cex = 0.5)
+    mtext(paste("a:", this_a), side = 3, adj = 0.1, line = -3, cex = 0.5)
   }
 }
 

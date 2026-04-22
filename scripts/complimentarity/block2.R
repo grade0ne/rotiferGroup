@@ -1,8 +1,8 @@
 library(tidyverse)
-
+library(growthrates)
 blk2data <- read.csv("data/block2data.csv")%>%
   mutate(across(c(diversity, replicate, competition, clone),as.factor))
-
+view(blk2data)
 
 # user-specified model
 logistic_alpha_function <- function(time, parms) {

@@ -1,8 +1,8 @@
-﻿day,diversity,replicate,competition,clone,rotifers,method_r,protist,method_p,NOTES
-0,Low,A,FALSE,1,1,slide ,,Slide ,
-0,Low,A,FALSE,2,2,slide ,,Slide ,
-0,Low,A,FALSE,3,3,slide ,,Slide ,
-0,Low,A,FALSE,4,4,slide ,,Slide ,
+day,diversity,replicate,competition,clone,rotifers,method_r,protist,method_p,NOTES
+0,Low,A,FALSE,1,1,slide ,,Slide ,start time for rotifer only 
+0,Low,A,FALSE,2,2,slide ,,Slide ,7:15am
+0,Low,A,FALSE,3,3,slide ,,Slide ,end time
+0,Low,A,FALSE,4,4,slide ,,Slide ,8:06am
 0,Low,A,FALSE,5,2,slide ,,Slide ,
 0,Low,B,FALSE,1,2,slide ,,Slide ,
 0,Low,B,FALSE,2,1,slide ,,Slide ,
@@ -35,8 +35,8 @@
 0,High,D,TRUE,mix,6,slide ,24,Slide ,
 0,High,E,TRUE,mix,4,slide ,28,Slide ,
 0,High,F,TRUE,mix,4,slide ,14,Slide ,
-1,Low,A,FALSE,1,1,slide ,,Line ,
-1,Low,A,FALSE,2,1,slide ,,Line ,
+1,Low,A,FALSE,1,1,slide ,,Line ,start time 11;24
+1,Low,A,FALSE,2,1,slide ,,Line ,end time 12;43
 1,Low,A,FALSE,3,2,slide ,,Line ,
 1,Low,A,FALSE,4,0,slide ,,Line ,
 1,Low,A,FALSE,5,4,slide ,,Line ,
@@ -71,8 +71,8 @@
 1,High,D,TRUE,mix,1,slide ,18,Line ,
 1,High,E,TRUE,mix,0,slide ,20,Line ,
 1,High,F,TRUE,mix,1,slide ,14,Line ,
-2,Low,A,FALSE,1,9,slide ,,Line ,
-2,Low,A,FALSE,2,2,slide ,,Line ,
+2,Low,A,FALSE,1,9,slide ,,Line ,start Time: 7;14am
+2,Low,A,FALSE,2,2,slide ,,Line ,end time:9;03am
 2,Low,A,FALSE,3,4,slide ,,Line ,
 2,Low,A,FALSE,4,0,slide ,,Line ,
 2,Low,A,FALSE,5,3,slide ,,Line ,
@@ -107,8 +107,8 @@
 2,High,D,TRUE,mix,2,slide ,48,Line ,
 2,High,E,TRUE,mix,4,slide ,44,Line ,
 2,High,F,TRUE,mix,6,slide ,31,Line ,
-3,Low,A,FALSE,1,6,slide ,,Line ,
-3,Low,A,FALSE,2,1,slide ,,Line ,
+3,Low,A,FALSE,1,6,slide ,,Line ,start time 9:43am
+3,Low,A,FALSE,2,1,slide ,,Line ,end time 11:09am
 3,Low,A,FALSE,3,1,slide ,,Line ,
 3,Low,A,FALSE,4,1,slide ,,Line ,
 3,Low,A,FALSE,5,12,slide ,,Line ,
@@ -143,8 +143,8 @@
 3,High,D,TRUE,mix,4,slide ,45,Line ,
 3,High,E,TRUE,mix,0,slide ,62,Line ,
 3,High,F,TRUE,mix,2,slide ,65,Line ,
-4,Low,A,FALSE,1,5,slide ,,Line ,
-4,Low,A,FALSE,2,1,slide ,,Line ,
+4,Low,A,FALSE,1,5,slide ,,Line ,start time ~ 12:31pm
+4,Low,A,FALSE,2,1,slide ,,Line ,end time~ 1:55pm
 4,Low,A,FALSE,3,6,slide ,,Line ,
 4,Low,A,FALSE,4,4,slide ,,Line ,
 4,Low,A,FALSE,5,5,slide ,,Line ,
@@ -215,8 +215,8 @@
 5,High,D,TRUE,mix,11,slide ,88,Line ,
 5,High,E,TRUE,mix,7,slide ,63,Line ,
 5,High,F,TRUE,mix,5,slide ,66,Line ,
-6,Low,A,FALSE,1,21,slide ,,Line,
-6,Low,A,FALSE,2,22,slide ,,Line,
+6,Low,A,FALSE,1,21,slide ,,Line,start time ~ 5:54pm
+6,Low,A,FALSE,2,22,slide ,,Line,end time~ 7:11pm
 6,Low,A,FALSE,3,16,slide ,,Line,
 6,Low,A,FALSE,4,18,slide ,,Line,
 6,Low,A,FALSE,5,13,slide ,,Line,
@@ -251,8 +251,8 @@
 6,High,D,TRUE,mix,7,slide ,90,Line,
 6,High,E,TRUE,mix,12,slide ,92,Line,
 6,High,F,TRUE,mix,7,slide,106,Line,
-8,Low,A,FALSE,1,40,slide,,Line,
-8,Low,A,FALSE,2,35,slide,,Line,
+8,Low,A,FALSE,1,40,slide,,Line,start time ~ 5:50pm
+8,Low,A,FALSE,2,35,slide,,Line,end time~ 7:30pm
 8,Low,A,FALSE,3,39,slide,,Line,
 8,Low,A,FALSE,4,37,slide,,Line,
 8,Low,A,FALSE,5,23,slide,,Line,

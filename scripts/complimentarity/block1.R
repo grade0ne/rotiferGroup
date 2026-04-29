@@ -1,6 +1,6 @@
 library(tidyverse)
 
-complim_data <- read.csv("data/complim_data_d16.csv") %>%
+complim_data <- read.csv("data/block1data.csv") %>%
   mutate(across(c(diversity, replicate, competition, clone), as.factor))
 
 rotifer_popn_df <- complim_data %>%
@@ -96,7 +96,7 @@ model_mix <- lmer(log(r) ~ competition + (1|clone), data = growth_summary)
 model_mix_log <- lmer(log(r) ~ diversity * competition + (1|clone), data = growth_summary)
 
 # alpha
-
+shapiro.test(growth_summary$alpha)
 hist(growth_summary$alpha)
 hist(log(growth_summary$alpha))
 

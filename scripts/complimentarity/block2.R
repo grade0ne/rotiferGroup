@@ -52,3 +52,44 @@ rotifer_growth_models <- all_growthmodels(
 
 growth_summary <- results(rotifer_growth_models) %>%
   mutate(across(c(diversity, competition, clone), as.factor))
+view(growth_summary)
+#stuff for anova test 
+library(moments)
+library(car)
+
+qqp(growth_summary$r)
+qqp(log(growth_summary$r))
+
+model_log <- lm(log(r) ~ diversity + competition + diversity:competition, data = growth_summary)
+anova(model_log)
+
+library(lme4)
+library(lmerTest)
+
+model_mix <- lmer(log(r) ~ competition + (1|clone), data = growth_summary)
+model_mix_log <- lmer(log(r) ~ diversity * competition + (1|clone), data = growth_summary)
+
+# alpha
+
+hist(growth_summary$alpha)
+hist(log(growth_summary$alpha))
+shapiro.test(growth_summary$alpha)
+shapiro.test(log(growth_summary$alpha))
+shapiro.test(sqrt(growth_summary$alpha))
+
+qqp(sqrt(growth_summary$alpha))
+
+alpha_model <- lm(sqrt(alpha) ~ diversity + competition + diversity:competition, data = growth_summary)
+
+
+# EQ
+growth_summary <- growth_summary %>%
+  mutate(eq = r / alpha)
+
+hist(growth_summary$eq)
+shapiro.test(growth_summary$eq)
+shapiro.test(sqrt(growth_summary$eq))
+#THIS IS NOT TURNING NORMAL
+qqp(growth_summary$eq)
+
+k_model <- lm(eq ~ diversity*competition, data = growth_summary)

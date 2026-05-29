@@ -41,7 +41,7 @@ plot_models <- function(models) {
   }
 }
 
-rotifer_growth_models <- all_growthmodels(
+rotifer_growth_models_2 <- all_growthmodels(
   rotifers ~ day | diversity + competition + clone + replicate, 
   data  = blk2data,
   p     = c(y0 = 5, r = 0.1, alpha = 0.0005), # initial

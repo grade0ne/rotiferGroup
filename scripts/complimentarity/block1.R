@@ -62,7 +62,7 @@ plot_models <- function(models) {
   }
 }
 
-rotifer_growth_models <- all_growthmodels(
+rotifer_growth_models_1 <- all_growthmodels(
   rotifers ~ day | diversity + competition + clone + replicate, 
   data  = complim_data,
   p     = c(y0 = 5, r = 0.1, alpha = 0.0005), # initial
@@ -71,7 +71,7 @@ rotifer_growth_models <- all_growthmodels(
   FUN   = grow_logistic_alpha
 )
 
-growth_summary <- results(rotifer_growth_models) %>%
+growth_summary_1 <- results(rotifer_growth_models_1) %>%
   mutate(across(c(diversity, competition, clone), as.factor))
 
 # 2: compare growth rate (r) with/without competition at high/low diversity

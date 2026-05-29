@@ -63,14 +63,25 @@ library(lme4)
 library(lmerTest)
 library(car)
 
-model1 <- lmer(log(r) ~ diversity * competition + (1|block) + (1|block/clone), growth_summary)
+model1 <- lmer(log(r) ~ diversity * competition + (1|block) + (1|block:clone), growth_summary)
+
+summary(model1)
+Anova(model1, type = "III")
 
 library(emmeans)
 
 emm <- emmeans(model1, ~ diversity | competition)
 pairs(emm)
 
+graphdata <- growth_summary %>%
+  group_by(block, diversity, competition) %>%
+  summarize(mean = mean((r)),
+            se = sd(r)/sqrt(n()))
 
+ggplot(graphdata, aes(x = competition, y = mean, fill = diversity)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_errorbar(stat = "identity", position = "dodge", aes(ymin = mean - se, ymax = mean + se)) +
+  facet_wrap(~block)
 
 # investigate
 # 
